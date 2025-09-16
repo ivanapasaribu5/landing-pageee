@@ -80,7 +80,41 @@
             >Kontak</a
           >
         </div>
+        <!-- Hamburger Button -->
+        <div class="md:hidden">
+          <button id="menu-toggle" class="text-white focus:outline-none">
+            <i class="fas fa-bars text-2xl"></i>
+          </button>
+        </div>
       </nav>
+      <!-- Mobile Menu -->
+      <div class="hidden md:hidden" id="mobile-menu">
+        <a
+          href="#services"
+          class="block py-2 px-4 text-sm hover:bg-slate-700 transition-colors"
+          >Layanan</a
+        >
+        <a
+          href="#gallery"
+          class="block py-2 px-4 text-sm hover:bg-slate-700 transition-colors"
+          >Galeri</a
+        >
+        <a
+          href="#profile"
+          class="block py-2 px-4 text-sm hover:bg-slate-700 transition-colors"
+          >Tentang Saya</a
+        >
+        <a
+          href="#testimonials"
+          class="block py-2 px-4 text-sm hover:bg-slate-700 transition-colors"
+          >Testimoni</a
+        >
+        <a
+          href="#contact"
+          class="block py-2 px-4 text-sm hover:bg-slate-700 transition-colors"
+          >Kontak</a
+        >
+      </div>
     </header>
 
     <main>
@@ -430,5 +464,32 @@
         &copy; 2024 Ivana Photo. Dibuat dengan penuh cinta.
       </div>
     </footer>
+    <script>
+      const menuToggle = document.getElementById("menu-toggle");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const menuIcon = menuToggle.querySelector("i");
+
+      menuToggle.addEventListener("click", () => {
+        const isHidden = mobileMenu.classList.toggle("hidden");
+
+        if (isHidden) {
+          menuIcon.classList.remove("fa-times");
+          menuIcon.classList.add("fa-bars");
+        } else {
+          menuIcon.classList.remove("fa-bars");
+          menuIcon.classList.add("fa-times");
+        }
+      });
+
+      // Menutup menu saat tautan di klik
+      const mobileMenuLinks = mobileMenu.querySelectorAll("a");
+      mobileMenuLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+          menuIcon.classList.remove("fa-times");
+          menuIcon.classList.add("fa-bars");
+        });
+      });
+    </script>
   </body>
 </html>
